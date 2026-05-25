@@ -1,0 +1,20 @@
+[project]
+name = "pipeline"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "click>=8.1.7",
+    "pandas>=3.0.3",
+    "psycopg[binary]>=3.3.4",
+    "pyarrow>=24.0.0",
+    "sqlalchemy>=2.0.50",
+    "tqdm>=4.67.3",
+]
+
+[dependency-groups]
+dev = [
+    "marimo>=0.23.8",
+    "pgcli>=4.4.0",
+]
