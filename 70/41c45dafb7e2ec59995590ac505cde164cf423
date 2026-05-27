@@ -1,0 +1,20 @@
+01-docker-terraform/homework/sql/longest_trip_day.sql
+  h_0b5caf7ef38889 1-9
+01-docker-terraform/homework/sql/biggest_pickup_zone.sql
+  h_0b5caf7ef38889 1-11
+01-docker-terraform/homework/sql/short_trips_count.sql
+  h_0b5caf7ef38889 1-7
+01-docker-terraform/homework/sql/largest_tip.sql
+  h_0b5caf7ef38889 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "7041c45dafb7e2ec59995590ac505cde164cf423",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
