@@ -1,0 +1,10 @@
+[project]
+name = "03-dlt-workshop"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dlt[duckdb,hub,workspace]>=1.27.2",
+    "pandas>=3.0.3",
+]
