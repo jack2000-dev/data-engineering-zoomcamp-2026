@@ -1,6 +1,6 @@
 # data-engineering-zoomcamp-2026
 
-## 🛠️ Module 1: Containerization and Infrastructure as Code (Weeks 1-2)
+## 🛠️ Module 1: Containerization and Infrastructure as Code
 
 Environment setup can be tricky; take your time during these two weeks.
 
@@ -25,8 +25,8 @@ Environment setup can be tricky; take your time during these two weeks.
 Slotted between Module 2 and Module 3.
 
 - [x] Attend/watch the hands-on workshop on the dlt (Data Load Tool) library
-- [ ] Learn how to handle automated schema detection and evolution using dlt
-- [ ] Complete the dedicated dlt workshop homework
+- [x] Learn how to handle automated schema detection and evolution using dlt
+- [x] Complete the dedicated dlt workshop homework
 
 ## 🏛️ Module 3: Data Warehouse
 

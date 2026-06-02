@@ -101,3 +101,6 @@ LIMIT 3;
 ## Homework
 
 Answers and verification scripts are in [`homework/README.md`](homework/README.md).
+
+## Reference
+- https://colab.research.google.com/github/anair123/data-engineering-zoomcamp/blob/workshop/dlt_2026/cohorts/2026/workshops/dlt/dlt_Pipeline_Overview.ipynb#scrollTo=-kNiY112Xvuk
