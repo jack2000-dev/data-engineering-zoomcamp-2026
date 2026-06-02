@@ -1,0 +1,20 @@
+03-dlt-workshop/README.md
+  s_640d5ae308e95c::t_33ee00bb12efb3 5-7,17,19,26,28-32,40-42,45,50-51,63-64,94,96
+  s_640d5ae308e95c::t_d3029c7f570c3d 1-4,8-16,18,20-25,27,33-39,43-44,46-49,52-62,65-93,95,97-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "bd9237777971165e466f85fedf69aaffc7972f63",
+  "prompts": {},
+  "sessions": {
+    "s_640d5ae308e95c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e8800-25b5-72e2-a326-a619f85b33a9",
+        "model": "gpt-5.5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
