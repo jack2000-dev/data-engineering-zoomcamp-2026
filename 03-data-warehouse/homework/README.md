@@ -49,7 +49,8 @@ AS
 SELECT *
 FROM `de-zoomcamp-2026-498303.ny_taxi.yellow_tripdata_2024`;
 ```
-Note: Parition is similary to group by where cluster is order by
+Note: Partitioning is similar to splitting a table into separate date-based sections.
+Clustering is similar to sorting rows within those sections.
 
 ## Question 6. Partition benefits
 
