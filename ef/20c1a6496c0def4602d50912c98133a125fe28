@@ -1,0 +1,32 @@
+03-data-warehouse/load_yellow_taxi_data.py
+  s_d3f0144987e97c::t_ee74db3086cb66 15-113
+03-data-warehouse/README.md
+  s_d3f0144987e97c::t_126e4281933b6b 178,234-311
+  s_d3f0144987e97c::t_d3f5ea72dfb6ce 168-177,179-233,312-314
+03-data-warehouse/dlt_upload_GCP.py
+  s_640d5ae308e95c::t_c7ed5bc71a2d42 14-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "ef20c1a6496c0def4602d50912c98133a125fe28",
+  "prompts": {},
+  "sessions": {
+    "s_640d5ae308e95c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e8800-25b5-72e2-a326-a619f85b33a9",
+        "model": "gpt-5.5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    },
+    "s_d3f0144987e97c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e8b82-d9c7-7a20-9824-fb421f399742",
+        "model": "gpt-5.5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
