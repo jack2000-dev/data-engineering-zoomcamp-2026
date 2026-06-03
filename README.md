@@ -30,11 +30,11 @@ Slotted between Module 2 and Module 3.
 
 ## 🏛️ Module 3: Data Warehouse
 
-- [ ] Understand core data warehousing concepts using Google BigQuery
-- [ ] Implement table partitioning to optimize queries and reduce scan costs
-- [ ] Implement table clustering to maximize query performance
-- [ ] Learn and apply BigQuery best practices for cost optimization
-- [ ] Complete Module 3 homework and assignments
+- [x] Understand core data warehousing concepts using Google BigQuery
+- [x] Implement table partitioning to optimize queries and reduce scan costs
+- [x] Implement table clustering to maximize query performance
+- [x] Learn and apply BigQuery best practices for cost optimization
+- [x] Complete Module 3 homework and assignments
 
 ## 📊 Module 4: Analytics Engineering
 
