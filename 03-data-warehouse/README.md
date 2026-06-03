@@ -165,6 +165,153 @@ AS SELECT * FROM `project.dataset.green_tripdata`;
 
 ---
 
+## Credential Management
+
+Use Google client libraries through **Application Default Credentials (ADC)** instead of hardcoding credential paths in Python code.
+
+### Local development
+
+For local homework work, keep the service account JSON key outside Git and pass it through the environment:
+
+```bash
+cd 03-data-warehouse
+export GOOGLE_APPLICATION_CREDENTIALS="$PWD/../keys/your-key-file.json"
+export GCS_BUCKET_NAME="your-unique-bucket-name"
+uv run python load_yellow_taxi_data.py
+```
+
+Then initialize the GCS client without referencing the JSON file directly:
+
+```python
+BUCKET_NAME = os.environ["GCS_BUCKET_NAME"]
+client = storage.Client()
+```
+
+Why this is preferred:
+
+- No personal paths such as `/Users/...` in source code
+- No secrets or credential filenames embedded in Python
+- Same code works across laptops, CI, and cloud runtimes
+- Credentials can be rotated without editing application code
+
+Keep credential files out of Git:
+
+```gitignore
+*.json
+.env
+```
+
+### Production
+
+In production, avoid service account JSON keys when possible. Attach a service account directly to the workload that runs the code:
+
+| Runtime | Production credential pattern |
+|---------|-------------------------------|
+| Compute Engine | Attach the service account to the VM |
+| Cloud Run | Set the service account on the Cloud Run service |
+| GKE | Use Workload Identity |
+| Cloud Composer / Airflow | Use the environment or worker service account |
+| GitHub Actions or external CI | Use Workload Identity Federation instead of storing JSON keys |
+
+The Python code stays the same:
+
+```python
+client = storage.Client()
+```
+
+Google Cloud automatically provides short-lived credentials to the runtime through the attached service account. This is safer than JSON keys because there is no long-lived private key file to leak, copy, or commit.
+
+For this homework, the practical roles are:
+
+| Role | Scope | Why |
+|------|-------|-----|
+| `roles/storage.admin` | Project or bucket setup phase | Create/check the bucket and upload parquet files |
+| `roles/storage.objectAdmin` | Existing bucket | Less broad option if the bucket already exists |
+| `roles/bigquery.jobUser` | Project | Run BigQuery jobs and queries |
+| `roles/bigquery.dataEditor` | Dataset | Create external, native, partitioned, and clustered tables |
+
+Use the narrowest scope that works. For a learning project, project-level roles are convenient. For production, prefer bucket-level and dataset-level grants.
+
+---
+
+## Homework BigQuery Setup
+
+After the six Yellow Taxi parquet files are uploaded to GCS, create the BigQuery tables manually in **BigQuery Studio > SQL editor**. Do not use the **Load data** button for this homework.
+
+Expected GCS files:
+
+```text
+gs://your-bucket/yellow_tripdata_2024-01.parquet
+gs://your-bucket/yellow_tripdata_2024-02.parquet
+gs://your-bucket/yellow_tripdata_2024-03.parquet
+gs://your-bucket/yellow_tripdata_2024-04.parquet
+gs://your-bucket/yellow_tripdata_2024-05.parquet
+gs://your-bucket/yellow_tripdata_2024-06.parquet
+```
+
+Use these placeholders in the SQL below:
+
+| Placeholder | Meaning |
+|-------------|---------|
+| `PROJECT_ID` | Your Google Cloud project ID |
+| `DATASET` | BigQuery dataset name, for example `ny_taxi` |
+| `BUCKET_NAME` | GCS bucket containing the parquet files |
+
+Create a BigQuery dataset if needed:
+
+```sql
+CREATE SCHEMA IF NOT EXISTS `PROJECT_ID.DATASET`;
+```
+
+Create an external table that reads the parquet files directly from GCS:
+
+```sql
+CREATE OR REPLACE EXTERNAL TABLE `PROJECT_ID.DATASET.yellow_tripdata_2024_external`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://BUCKET_NAME/yellow_tripdata_2024-*.parquet']
+);
+```
+
+The external table does not copy data into BigQuery storage. It points BigQuery at the parquet files in GCS.
+
+Create a regular native BigQuery table from the external table. Do not partition or cluster this table:
+
+```sql
+CREATE OR REPLACE TABLE `PROJECT_ID.DATASET.yellow_tripdata_2024`
+AS
+SELECT *
+FROM `PROJECT_ID.DATASET.yellow_tripdata_2024_external`;
+```
+
+Verify both tables have the same row count:
+
+```sql
+SELECT COUNT(*) AS record_count
+FROM `PROJECT_ID.DATASET.yellow_tripdata_2024_external`;
+
+SELECT COUNT(*) AS record_count
+FROM `PROJECT_ID.DATASET.yellow_tripdata_2024`;
+```
+
+The expected record count for January-June 2024 Yellow Taxi data is:
+
+```text
+20,332,093
+```
+
+Flow summary:
+
+```text
+GCS parquet files
+  -> external table reads files in place
+  -> regular table copies data into native BigQuery storage
+```
+
+Use a dataset location compatible with the GCS bucket location. Keeping both in the same region or compatible multi-region avoids location errors.
+
+---
+
 ## BigQuery Internals (How It Works)
 
 ### Columnar Storage
