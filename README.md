@@ -1,72 +1,105 @@
-# data-engineering-zoomcamp-2026
+# Data Engineering Zoomcamp 2026
 
-## 🛠️ Module 1: Containerization and Infrastructure as Code
+# Overview
 
-Environment setup can be tricky; take your time during these two weeks.
+![Data Engineer Zoomcamp 2026 Overview](</img/Data Engineer Zoomcamp 2026 Overview.excalidraw.png>)
 
-- [x] Understand Docker fundamentals and containerize a Postgres database
+Personal coursework repository for the [DataTalksClub Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp).
+
+The checklist below tracks my progress against the 2026 syllabus.
+
+## Module 1: Containerization and Infrastructure as Code
+
+[Local notes and work](01-docker-terraform/)
+
+- [x] Learn GCP fundamentals for the course environment
+- [x] Understand Docker fundamentals and Docker Compose
+- [x] Run PostgreSQL locally with Docker
 - [x] Set up a local data engineering development environment
-- [x] Configure a cloud development environment on Google Cloud Platform (GCP)
-- [x] Learn Terraform basics for Infrastructure as Code (IaC)
-- [x] Use Terraform to provision cloud infrastructure resources
+- [x] Use Terraform to provision cloud infrastructure
 - [x] Complete Module 1 homework and assignments
 
-## 🔀 Module 2: Workflow Orchestration
+## Module 2: Workflow Orchestration
 
-- [x] Learn the fundamentals of workflow orchestration using Kestra
-- [x] Build data pipelines that handle production scheduling
-- [x] Implement robust pipeline mechanics: retries and historical backfills
-- [x] Configure pipelines to load raw data into Google Cloud Storage (GCS)
-- [x] Configure pipelines to load structured data into BigQuery
+[Local notes and work](02-workflow-orchestration/)
+
+- [x] Understand data lakes and workflow orchestration concepts
+- [x] Build and schedule workflows with Kestra
+- [x] Configure retries, backfills, and production-style pipeline mechanics
+- [x] Load raw data into Google Cloud Storage (GCS)
+- [x] Load structured data into BigQuery
 - [x] Complete Module 2 homework and assignments
 
-## 🛠️ Workshop: Data Ingestion with dlt
+## Workshop 1: Data Ingestion
 
-Slotted between Module 2 and Module 3.
+[Local notes and work](03-dlt-workshop/)
 
-- [x] Attend/watch the hands-on workshop on the dlt (Data Load Tool) library
-- [x] Learn how to handle automated schema detection and evolution using dlt
-- [x] Complete the dedicated dlt workshop homework
+- [x] Learn data ingestion patterns with dlt
+- [x] Read from APIs and handle scalable pipelines
+- [x] Practice normalization and incremental loading
+- [x] Complete the workshop homework
 
-## 🏛️ Module 3: Data Warehouse
+## Module 3: Data Warehousing
 
-- [x] Understand core data warehousing concepts using Google BigQuery
-- [x] Implement table partitioning to optimize queries and reduce scan costs
-- [x] Implement table clustering to maximize query performance
-- [x] Learn and apply BigQuery best practices for cost optimization
+[Local notes and work](03-data-warehouse/)
+
+- [x] Understand BigQuery as a serverless data warehouse
+- [x] Create external tables over files in GCS
+- [x] Create native BigQuery tables from external data
+- [x] Apply partitioning and clustering for query optimization
+- [x] Learn BigQuery cost and performance best practices
+- [x] Review BigQuery ML concepts
 - [x] Complete Module 3 homework and assignments
 
-## 📊 Module 4: Analytics Engineering
+## Module 4: Analytics Engineering
 
-- [ ] Understand the role of analytics engineering and set up dbt (Data Build Tool)
-- [ ] Build clean, modular Staging models in dbt
-- [ ] Build Intermediate models to handle complex business logic
-- [ ] Build downstream Mart models optimized for business intelligence
-- [ ] Implement data testing and generate project documentation within dbt
-- [ ] Connect BigQuery data marts to an interactive dashboard / BI tool
+- [ ] Understand analytics engineering and dimensional modeling
+- [ ] Set up dbt with DuckDB and BigQuery
+- [ ] Build staging models
+- [ ] Build intermediate models for reusable business logic
+- [ ] Build marts for analytics and reporting
+- [ ] Add dbt tests and documentation
+- [ ] Deploy dbt models and connect them to BI workflows
 - [ ] Complete Module 4 homework and assignments
 
-## ⚡ Module 5: Batch Processing
+## Module 5: Data Platforms
 
-- [ ] Learn Apache Spark architecture and core batch processing fundamentals
-- [ ] Write data transformation workflows using PySpark
-- [ ] Process and analyze the NYC Taxi dataset using Spark
-- [ ] Deploy and scale Spark applications on Google Cloud Dataproc
+- [ ] Understand end-to-end data platform design
+- [ ] Build data pipelines with ~~Bruin~~ **Databricks**
+- [ ] Ingest data into the platform
+- [ ] Transform and validate data quality
+- [ ] Deploy data workflows to BigQuery
 - [ ] Complete Module 5 homework and assignments
 
-## 🌊 Module 6: Streaming
+## Module 6: Batch Processing
 
-- [ ] Learn the concepts of event-driven architectures and Apache Kafka fundamentals
-- [ ] Build real-time stream processing applications using Kafka and Apache Flink
-- [ ] Implement schema management using a Schema Registry and handle data serialization
+- [ ] Learn Apache Spark fundamentals
+- [ ] Work with Spark DataFrames and SQL
+- [ ] Understand Spark internals for groupBy and joins
+- [ ] Process and analyze the NYC Taxi dataset with Spark
 - [ ] Complete Module 6 homework and assignments
 
-## 🎓 Final Project
+## Module 7: Streaming
 
-- [ ] Scope and design an end-to-end data pipeline architecture of your choice
-- [ ] Provision cloud infrastructure using Terraform (IaC)
-- [ ] Ingest data from a public API or dataset (via batch or streaming)
-- [ ] Orchestrate the pipeline workflow using an orchestrator (e.g., Kestra)
-- [ ] Transform and model the data in a data warehouse (e.g., BigQuery, dbt)
-- [ ] Build a public-facing dashboard to visualize your insights
-- [ ] Document the repository and submit the project before the cohort deadline
+- [ ] Learn Kafka fundamentals
+- [ ] Build streaming applications with Kafka Streams and KSQL
+- [ ] Manage schemas with Avro
+- [ ] Understand event-driven data pipeline patterns
+- [ ] Complete Module 7 homework and assignments
+
+## Final Project
+
+This will based on my existing project [E-commerce-dashboard v1](https://github.com/jack2000-dev/e-commerce-dashboard) → E-commerce-dashboard v2
+
+- [ ] Scope and design an end-to-end data pipeline
+- [ ] Provision infrastructure with Terraform
+- [ ] Ingest data from a public API or dataset
+- [ ] Orchestrate the pipeline workflow with Apache Airflow
+- [ ] Transform and model data in a warehouse
+- [ ] Build a dashboard or analytical output
+- [ ] Document the project and publish in Github repo
+
+## References
+
+- [Official Data Engineering Zoomcamp repository](https://github.com/DataTalksClub/data-engineering-zoomcamp)
+- [2026 cohort registration and course materials](https://github.com/DataTalksClub/data-engineering-zoomcamp#how-to-enroll)
