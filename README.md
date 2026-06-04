@@ -53,8 +53,8 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Module 4: Analytics Engineering
 
-- [ ] Understand analytics engineering and dimensional modeling
-- [ ] Set up dbt with DuckDB and BigQuery
+- [x] Understand analytics engineering and dimensional modeling
+- [x] Set up dbt with DuckDB and BigQuery
 - [ ] Build staging models
 - [ ] Build intermediate models for reusable business logic
 - [ ] Build marts for analytics and reporting
