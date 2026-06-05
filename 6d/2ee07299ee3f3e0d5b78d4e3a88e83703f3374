@@ -1,0 +1,19 @@
+04-analytics-engineering/load_taxi_data.py
+  s_abd7fd079596b0::t_e25b9e1c7034e2 1-150
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "6d2ee07299ee3f3e0d5b78d4e3a88e83703f3374",
+  "prompts": {},
+  "sessions": {
+    "s_abd7fd079596b0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e92c1-1808-70a1-b0e0-64878f869dca",
+        "model": "gpt-5.5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
