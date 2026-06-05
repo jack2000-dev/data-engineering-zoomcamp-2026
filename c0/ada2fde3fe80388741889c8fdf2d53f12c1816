@@ -1,0 +1,72 @@
+04-analytics-engineering/taxi_rides_ny/models/staging/schema.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-94
+  s_abd7fd079596b0::t_7ecaf662b057ad 95-116
+04-analytics-engineering/taxi_rides_ny/seeds/seeds_properties.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-20
+04-analytics-engineering/taxi_rides_ny/macros/get_trip_duration_minutes.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-12
+04-analytics-engineering/taxi_rides_ny/models/staging/stg_fhv_tripdata.sql
+  s_abd7fd079596b0::t_7ecaf662b057ad 1-26
+04-analytics-engineering/taxi_rides_ny/macros/get_vendor_data.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-25
+04-analytics-engineering/taxi_rides_ny/models/intermediate/schema.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-106
+04-analytics-engineering/taxi_rides_ny/models/marts/fct_trips.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-61
+04-analytics-engineering/taxi_rides_ny/models/marts/dim_zones.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-10
+.gitignore
+  s_abd7fd079596b0::t_7ecaf662b057ad 222-225,232
+  s_abd7fd079596b0::t_e8366c8baa7417 229
+04-analytics-engineering/taxi_rides_ny/seeds/payment_type_lookup.csv
+  ai_agent 1-8
+04-analytics-engineering/taxi_rides_ny/.gitignore
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-93
+04-analytics-engineering/taxi_rides_ny/models/marts/reporting/schema.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-34
+04-analytics-engineering/taxi_rides_ny/models/marts/dim_vendors.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-15
+04-analytics-engineering/taxi_rides_ny/models/marts/reporting/fct_monthly_zone_revenue.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-29
+04-analytics-engineering/taxi_rides_ny/dbt_project.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-39
+04-analytics-engineering/taxi_rides_ny/models/intermediate/int_trips.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-62
+04-analytics-engineering/taxi_rides_ny/models/staging/sources.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-99,119-122
+  s_abd7fd079596b0::t_7ecaf662b057ad 100-118
+04-analytics-engineering/taxi_rides_ny/macros/macros_properties.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-23
+04-analytics-engineering/taxi_rides_ny/macros/safe_cast.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-7
+04-analytics-engineering/taxi_rides_ny/models/marts/schema.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-138
+04-analytics-engineering/taxi_rides_ny/models/staging/stg_yellow_tripdata.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-42
+04-analytics-engineering/taxi_rides_ny/package-lock.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-8
+04-analytics-engineering/taxi_rides_ny/models/staging/stg_green_tripdata.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-43
+04-analytics-engineering/taxi_rides_ny/seeds/taxi_zone_lookup.csv
+  ai_agent 1-266
+04-analytics-engineering/taxi_rides_ny/models/intermediate/int_trips_unioned.sql
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-56
+04-analytics-engineering/taxi_rides_ny/packages.yml
+  s_abd7fd079596b0::t_e0d53ce4fb0157 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "c0ada2fde3fe80388741889c8fdf2d53f12c1816",
+  "prompts": {},
+  "sessions": {
+    "s_abd7fd079596b0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e92c1-1808-70a1-b0e0-64878f869dca",
+        "model": "gpt-5.5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
