@@ -1,0 +1,21 @@
+04-analytics-engineering/README.md
+  s_abd7fd079596b0::t_3d383e278cda6a 118-119
+  s_abd7fd079596b0::t_a2a80fa2224083 1-4,31-41,43-45,78-117,120-321
+  s_abd7fd079596b0::t_f61ab3bde09401 5-30,42,46-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "823919f3750d547dd7e8121e7100c4c8d5925d27",
+  "prompts": {},
+  "sessions": {
+    "s_abd7fd079596b0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e92c1-1808-70a1-b0e0-64878f869dca",
+        "model": "gpt-5.5"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
