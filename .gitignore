@@ -219,9 +219,14 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# Local data extracts
+04-analytics-engineering/data/
+.DS_Store
+
 # Data
 *.parquet
 *.csv
+!04-analytics-engineering/taxi_rides_ny/seeds/*.csv
 
 # Local
 .DS_Store
