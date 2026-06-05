@@ -1,0 +1,7 @@
+[project]
+name = "04-analytics-engineering"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "google-cloud-storage",
+]
