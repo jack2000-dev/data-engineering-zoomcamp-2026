@@ -1,0 +1,9 @@
+04-analytics-engineering/taxi_rides_ny/models/staging/sources.yml
+  ai_agent 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "aea85ead87a70077d18d39a6791b7e37f6bde069",
+  "prompts": {}
+}
