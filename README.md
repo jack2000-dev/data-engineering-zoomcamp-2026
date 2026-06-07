@@ -55,12 +55,12 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 - [x] Understand analytics engineering and dimensional modeling
 - [x] Set up dbt with DuckDB and BigQuery
-- [ ] Build staging models
-- [ ] Build intermediate models for reusable business logic
-- [ ] Build marts for analytics and reporting
-- [ ] Add dbt tests and documentation
-- [ ] Deploy dbt models and connect them to BI workflows
-- [ ] Complete Module 4 homework and assignments
+- [x] Build staging models
+- [x] Build intermediate models for reusable business logic
+- [x] Build marts for analytics and reporting
+- [x] Add dbt tests and documentation
+- [x] Deploy dbt models and connect them to BI workflows
+- [x] Complete Module 4 homework and assignments
 
 ## Module 5: Data Platforms
 
