@@ -255,6 +255,71 @@ dbt_prod.stg_fhv_tripdata
 
 ---
 
+## dbt Tests and Documentation
+
+dbt tests are SQL checks defined mostly in `schema.yml` files. A test passes when it returns **zero rows**. If it returns rows, dbt treats those rows as failures.
+
+Common generic tests:
+
+| Test | What it checks |
+|------|----------------|
+| `not_null` | Column should not contain null values |
+| `unique` | Column values should be unique |
+| `accepted_values` | Column should only contain allowed values |
+| `relationships` | Foreign key values should exist in another model |
+
+Example from this project:
+
+```yaml
+columns:
+  - name: service_type
+    data_tests:
+      - accepted_values:
+          arguments:
+            values: ['Green', 'Yellow']
+      - not_null
+```
+
+Run tests only:
+
+```bash
+dbt test
+```
+
+Run one model and its tests:
+
+```bash
+dbt build --select fct_trips
+```
+
+dbt documentation comes from:
+
+- model descriptions in `schema.yml`
+- column descriptions in `schema.yml`
+- source definitions in `sources.yml`
+- lineage from `ref()` and `source()`
+
+Generate docs:
+
+```bash
+dbt docs generate
+```
+
+In dbt Cloud, use the **Lineage** and documentation views in the IDE. Locally, if dbt is installed, serve generated docs with:
+
+```bash
+dbt docs serve
+```
+
+The docs site is useful for answering:
+
+- What does this model do?
+- What columns does it produce?
+- Which upstream sources/models does it depend on?
+- Which downstream models will break if this changes?
+
+---
+
 ## Common Commands
 
 Run one model only:
