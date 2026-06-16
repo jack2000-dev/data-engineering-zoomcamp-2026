@@ -64,9 +64,9 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Module 5: Data Platforms
 
-- [ ] Understand end-to-end data platform design
-- [ ] Build data pipelines with ~~Bruin~~ **Databricks**
-- [ ] Ingest data into the platform
+- [x] Understand end-to-end data platform design
+- [x] Build data pipelines with ~~Bruin~~ **Databricks**
+- [x] Ingest data into the platform
 - [ ] Transform and validate data quality
 - [ ] Deploy data workflows to BigQuery
 - [ ] Complete Module 5 homework and assignments
