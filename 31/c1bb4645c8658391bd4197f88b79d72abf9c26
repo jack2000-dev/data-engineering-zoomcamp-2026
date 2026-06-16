@@ -1,0 +1,21 @@
+05-data-platforms/databricks_taxi_pipeline/de_zoomcamp_2026/src/ingest_taxi.py
+  s_236e32200b2b3e::t_5ed3e645a79b62 4,8-12,14,17,23
+05-data-platforms/databricks_taxi_pipeline/de_zoomcamp_2026/resources/jobs.yml
+  s_236e32200b2b3e::t_f03a602103bb29 9-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "31c1bb4645c8658391bd4197f88b79d72abf9c26",
+  "prompts": {},
+  "sessions": {
+    "s_236e32200b2b3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ca7b929-e9e4-472a-b329-c95b2e09ddc9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
