@@ -1,0 +1,11 @@
+resources:
+  jobs:
+    ingest_taxi_job:
+      name: Ingest NYC Taxi Data
+      tasks:
+        - task_key: ingest_task
+          spark_python_task:
+            python_file: ../src/ingest_taxi.py
+          new_cluster:
+            workload_type:
+              serverless: {}
