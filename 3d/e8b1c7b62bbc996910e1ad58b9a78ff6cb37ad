@@ -1,0 +1,18 @@
+05-data-platforms/databricks_taxi_pipeline/de_zoomcamp_2026/databricks.yml
+  h_0b5caf7ef38889 1-46
+05-data-platforms/databricks_taxi_pipeline/de_zoomcamp_2026/src/ingest_taxi.py
+  h_0b5caf7ef38889 1-31
+05-data-platforms/databricks_taxi_pipeline/de_zoomcamp_2026/resources/jobs.yml
+  h_0b5caf7ef38889 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "3de8b1c7b62bbc996910e1ad58b9a78ff6cb37ad",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
