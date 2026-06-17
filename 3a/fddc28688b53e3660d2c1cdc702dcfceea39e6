@@ -1,0 +1,19 @@
+05-data-platforms/homework/homework.md
+  s_236e32200b2b3e::t_5c7a9a9502649d 5-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "3afddc28688b53e3660d2c1cdc702dcfceea39e6",
+  "prompts": {},
+  "sessions": {
+    "s_236e32200b2b3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ca7b929-e9e4-472a-b329-c95b2e09ddc9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
