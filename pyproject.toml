@@ -5,5 +5,26 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "pandas>=3.0.3",
     "pyspark>=4.1.2",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+]
+
+# uv workspace: every lesson shares this root's single .venv and uv.lock.
+# Each member keeps its own pyproject.toml listing only its dependencies.
+# 05-data-platforms is intentionally excluded because databricks-connect
+# requires Python <3.13, which conflicts with the rest of the project.
+[tool.uv.workspace]
+members = [
+    "01-docker-terraform/pipeline",
+    "03-data-warehouse",
+    "03-dlt-workshop",
+    "04-analytics-engineering",
+]
+exclude = [
+    "05-data-platforms/*",
 ]

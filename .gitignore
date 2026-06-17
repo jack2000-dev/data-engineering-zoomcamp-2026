@@ -227,6 +227,7 @@ __marimo__/
 *.parquet
 *.csv
 !04-analytics-engineering/taxi_rides_ny/seeds/*.csv
+data/
 
 # Local
 .DS_Store

@@ -69,11 +69,11 @@ The checklist below tracks my progress against the 2026 syllabus.
 - [x] Ingest data into the platform
 - [ ] Transform and validate data quality
 - [ ] Deploy data workflows to BigQuery
-- [ ] Complete Module 5 homework and assignments
+- [x] Complete Module 5 homework and assignments
 
 ## Module 6: Batch Processing
 
-- [ ] Learn Apache Spark fundamentals
+- [x] Learn Apache Spark fundamentals
 - [ ] Work with Spark DataFrames and SQL
 - [ ] Understand Spark internals for groupBy and joins
 - [ ] Process and analyze the NYC Taxi dataset with Spark
