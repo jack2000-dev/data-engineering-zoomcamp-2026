@@ -1,0 +1,43 @@
+pyproject.toml
+  s_d5fa60581ad8de::t_5adaff6cf230d9 16-30
+06-batch/download_data.sh
+  s_236e32200b2b3e::t_1becb7bee72efc 7-11
+  s_236e32200b2b3e::t_3d96aff360f796 25
+.gitignore
+  h_0b5caf7ef38889 230
+README.md
+  h_0b5caf7ef38889 72,76
+03-dlt-workshop/pyproject.toml
+  h_0b5caf7ef38889 8
+06-batch/pyspark.ipynb
+  s_d5fa60581ad8de::t_fd44a74bcaaeba 71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "1f4ee601896636a8b362b6bef7fe6ad6b68a51d0",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_236e32200b2b3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ca7b929-e9e4-472a-b329-c95b2e09ddc9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    },
+    "s_d5fa60581ad8de": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "a1172849-b8f0-41e9-93c5-245f100b1e61",
+        "model": "gpt-5-mini"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
