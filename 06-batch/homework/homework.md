@@ -50,7 +50,7 @@ Repartition the Dataframe to 4 partitions and save it to parquet.
 What is the average size of the Parquet (ending with .parquet extension) Files that were created (in MB)? Select the answer which most closely matches.
 
 - [ ] 6MB
-- [ ] 25MB
+- [x] 25MB
 - [ ] 75MB
 - [ ] 100MB
 
@@ -63,7 +63,7 @@ Consider only trips that started on the 15th of November.
 
 - [ ] 62,610
 - [ ] 102,340
-- [ ] 162,604
+- [x] 162,604
 - [ ] 225,768
 
 
@@ -73,7 +73,7 @@ What is the length of the longest trip in the dataset in hours?
 
 - [ ] 22.7
 - [ ] 58.2
-- [ ] 90.6
+- [x] 90.6
 - [ ] 134.5
 
 
@@ -83,7 +83,7 @@ Spark's User Interface which shows the application's dashboard runs on which loc
 
 - [ ] 80
 - [ ] 443
-- [ ] 4040
+- [x] 4040
 - [ ] 8080
 
 
@@ -98,9 +98,9 @@ wget https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
 
 Using the zone lookup data and the Yellow November 2025 data, what is the name of the LEAST frequent pickup location Zone?
 
-- [ ] Governor's Island/Ellis Island/Liberty Island
-- [ ] Arden Heights
-- [ ] Rikers Island
+- [x] Governor's Island/Ellis Island/Liberty Island
+- [x] Arden Heights
+- [x] Rikers Island
 - [ ] Jamaica Bay
 
 If multiple answers are correct, select any

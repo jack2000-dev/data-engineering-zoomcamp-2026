@@ -74,10 +74,10 @@ The checklist below tracks my progress against the 2026 syllabus.
 ## Module 6: Batch Processing
 
 - [x] Learn Apache Spark fundamentals
-- [ ] Work with Spark DataFrames and SQL
-- [ ] Understand Spark internals for groupBy and joins
-- [ ] Process and analyze the NYC Taxi dataset with Spark
-- [ ] Complete Module 6 homework and assignments
+- [x] Work with Spark DataFrames and SQL
+- [x] Understand Spark internals for groupBy and joins
+- [x] Process and analyze the NYC Taxi dataset with Spark
+- [x] Complete Module 6 homework and assignments
 
 ## Module 7: Streaming
 
