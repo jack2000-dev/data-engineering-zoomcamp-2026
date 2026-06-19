@@ -1,0 +1,18 @@
+06-batch/homework/homework.md
+  h_0b5caf7ef38889 53,66,76,86,101-103
+06-batch/README.md
+  h_0b5caf7ef38889 1-11
+README.md
+  h_0b5caf7ef38889 77-80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "9ff27fe878061b60da24bae5e8c137dccc6b269d",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
