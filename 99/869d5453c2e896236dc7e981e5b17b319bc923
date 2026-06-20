@@ -1,0 +1,21 @@
+05-data-platforms/README.md
+  s_76d1caff90e9f3::t_91b76a59b0ceb7 1-110
+06-batch/README.md
+  s_76d1caff90e9f3::t_943a6e3875fd39 1,3-5,7-332,334,337-353,355,357-362
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "99869d5453c2e896236dc7e981e5b17b319bc923",
+  "prompts": {},
+  "sessions": {
+    "s_76d1caff90e9f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "012909ea-af0c-4c99-8549-c27f797988c2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
