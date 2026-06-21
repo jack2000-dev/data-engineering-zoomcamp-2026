@@ -81,7 +81,7 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Module 7: Streaming
 
-- [ ] Learn Kafka fundamentals
+- [x] Learn Kafka fundamentals
 - [ ] Build streaming applications with Kafka Streams and KSQL
 - [ ] Manage schemas with Avro
 - [ ] Understand event-driven data pipeline patterns
