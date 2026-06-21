@@ -13,7 +13,7 @@ For this homework we will be using Green Taxi Trip data from October 2025:
 ## Setup
 
 We'll use the same infrastructure from the [workshop](../../../07-streaming/workshop/).
-
+  
 Follow the setup instructions: build the Docker image, start the services:
 
 ```bash
