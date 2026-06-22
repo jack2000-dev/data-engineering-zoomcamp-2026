@@ -1,0 +1,48 @@
+07-streaming/src/consumers/consumer_postgres.py
+  h_0b5caf7ef38889 1-55
+07-streaming/docker-compose.yaml
+  h_0b5caf7ef38889 31-80
+07-streaming/src/producers/producer.py
+  h_0b5caf7ef38889 23,27,34-35,38
+07-streaming/src/models.py
+  h_0b5caf7ef38889 1,21
+07-streaming/src/producers/producer_realtime.py
+  h_0b5caf7ef38889 1-89
+07-streaming/src/consumers/consumer.py
+  h_0b5caf7ef38889 2-5,7-9,11,13-17,19-25,28-29,32,34-38,40-42,44,46
+  s_55396df2f32a1b::t_210ca7114ed452 1,6,10,12,18,26-27,30-31,33,39,43,45
+07-streaming/flink_build.sh
+  h_0b5caf7ef38889 1-6
+07-streaming/src/job/pass_through_job.py
+  h_0b5caf7ef38889 1-79
+07-streaming/README.md
+  s_55396df2f32a1b::t_ec74330dddfe3d 1-162
+07-streaming/Dockerfile.flink
+  s_55396df2f32a1b::t_c13efe3b611af8 6
+  s_55396df2f32a1b::t_86c0ba01a92130 15
+  h_0b5caf7ef38889 1,7-8,11-14,16-21,23-27,34,37-39
+  s_55396df2f32a1b::t_89d8f3323ab1ed 9-10,22
+07-streaming/src/job/aggregation_job.py
+  h_0b5caf7ef38889 1-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "b5f7d8b839379772c853401b81ff7549970ef4e0",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_55396df2f32a1b": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "2272ca64-da1a-404f-8e44-845b71be007d",
+        "model": "gpt-5-mini"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
