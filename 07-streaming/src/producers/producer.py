@@ -20,20 +20,22 @@ def ride_serializer(ride):
     json_str = json.dumps(ride_dict)
     return json_str.encode('utf-8')
 
+# Connect to Kafka
 server = 'localhost:9092'
 
 producer = KafkaProducer(
-    bootstrap_servers=[server],
+    bootstrap_servers=[server], #for container -> redpanda:29092
     value_serializer=ride_serializer
 )
 t0 = time.time()
 
 topic_name = 'rides'
 
-for _, row in df.iterrows():
+# _ is Python's standard "throwaway variable"
+for _, row in df.iterrows(): 
     ride = ride_from_now(row)
     producer.send(topic_name, value=ride)
-    print(f'Sent: {Ride}')
+    print(f'Sent: {ride}')
     time.sleep(0.01)
 
 producer.flush()

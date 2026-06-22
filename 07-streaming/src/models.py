@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 
 @dataclass
@@ -17,7 +18,7 @@ def ride_from_now(row):
       tpep_pickup_datetime=int(row['tpep_pickup_datetime'].timestamp() * 1000)
     )
 
-def deserializer(data):
+def ride_deserializer(data):
     json_str = data.decode('utf-8')
     ride_dict = json.loads(json_str)
     return Ride(**ride_dict)
