@@ -13,6 +13,22 @@ Real-time pipeline: **Producer (Python) → Kafka (Redpanda) → Flink → Postg
 
 **When to use streaming:** only when an *automated process reacts in real time* (fraud detection, surge pricing). If a human just looks at a dashboard, micro-batch (every 15 min / hourly) is simpler and cheaper. A streaming job that breaks at 3 AM needs someone on-call.
 
+## The mindset shift (read this first)
+
+If you're confused, it's almost always because streaming breaks two habits you built with batch/SQL:
+
+1. **The job never finishes.** A batch script reads a file, computes, prints, and exits. A streaming job is a *server*: you start it and it runs forever, waiting for the next event. When your Flink job "hangs" and doesn't return to the prompt — that's not a bug, that's the whole idea. You read the results from Postgres while it's still running, then cancel it from the UI.
+
+2. **Results come out in chunks, not all at once.** You don't get a final answer; you get a stream of partial answers as time advances. A "window" is how you chop the never-ending stream into finite pieces you *can* answer (e.g. "trips per 5 minutes").
+
+**One analogy for the whole module:** think of a sushi conveyor belt.
+- The **producer** is the chef putting plates on the belt (one plate = one taxi trip event).
+- **Kafka/Redpanda** is the belt itself — it just carries plates in order and remembers them for a while.
+- **Flink** is you at the counter, grouping plates into batches ("every 5 minutes of plates, count them").
+- **Postgres** is your notebook where you write down each batch's total.
+
+The chef never stops, so neither do you — you just keep tallying batch after batch.
+
 ## Architecture
 
 ```
@@ -106,17 +122,94 @@ A message's position number in a topic (0, 1, 2, …). Each consumer group track
 ### Consumer group
 A named team of consumers. Kafka tracks each group's offset separately. Same `group_id` restarted = resume; different `group_id` = re-read from start.
 
-### Window
-*What* to count into — a time bucket.
-- **Tumbling** (`TUMBLE`) — fixed, non-overlapping (trips/hour)
-- **Sliding/Hop** (`HOP`) — fixed, overlapping (moving averages, surge detection)
-- **Session** (`SESSION`) — dynamic, closes after inactivity gap (user sessions)
+### Event time vs processing time (the concept that confuses everyone)
 
-### Watermark
-*When* to publish a window. Trails the latest event by a tolerance (e.g., 5s). When the watermark passes a window's end, Flink emits that window. Without it, Flink would buffer forever.
+Two different clocks exist, and mixing them up causes wrong answers:
+
+- **Event time** — *when the trip actually happened*, baked into the data (`lpep_pickup_datetime`). This is what you almost always want.
+- **Processing time** — *when Flink happened to read the message* (wall-clock). Depends on network speed, replays, when you started the job — not reproducible.
+
+Why it matters: messages can arrive **late or out of order**. Imagine trips A (8:04) and B (8:06). Due to a network hiccup, Flink reads B *before* A. If you bucketed by processing time, A would land in the wrong window. By using **event time**, both go to the correct 8:00–8:05 / 8:05–8:10 windows regardless of arrival order. That's why the source DDL builds `event_timestamp` from the data and declares a `WATERMARK` on it.
+
+### Window
+*What* to count into — a way to chop an infinite stream into finite buckets.
+
+- **Tumbling** (`TUMBLE`) — fixed, non-overlapping. "Trips per 5 minutes." (Q4)
+  ```
+  events: · ··  ·   ·· ···   ·  ··
+          |--------|--------|--------|
+          8:00     8:05     8:10     8:15
+           win 1    win 2    win 3        every event lands in exactly ONE window
+  ```
+- **Sliding / Hop** (`HOP`) — fixed size, overlapping. "5-min count, recomputed every 1 min." (moving averages)
+  ```
+  |-----|
+     |-----|
+        |-----|     an event can belong to SEVERAL windows
+  ```
+- **Session** (`SESSION`) — dynamic, *per key*. A window grows while events keep arriving within a gap; it closes after a gap of inactivity. (Q5)
+  ```
+  PULoc 42:  · · · ·          · ·              ·
+             |-------|        |---|           |-|
+             session A        sess B          C
+              ↑ 4 trips close together   ↑ >5min gap starts a new session
+  ```
+
+### Watermark (why your window sometimes shows nothing)
+
+A watermark is Flink's way of saying *"I'm now confident I've seen every event up to time T — so any window ending at or before T can be finalized and published."*
+
+It **trails the latest event** by your tolerance. With `event_timestamp - INTERVAL '5' SECOND`, the watermark is always 5s behind the newest event seen. Concretely:
+
+```
+newest event seen: 8:05:30   →   watermark = 8:05:25
+→ window 8:00–8:05 is now safe to emit (its end 8:05 ≤ 8:05:25)
+→ a straggler from 8:04 arriving now is still counted (within tolerance)
+→ a straggler older than the tolerance is dropped (or corrected via the upsert sink)
+```
+
+Two consequences that bite beginners:
+- **No watermark progress = no output, ever.** If the watermark can't advance, no window's end is ever "passed," so Flink buffers forever and your Postgres table stays empty. (See the troubleshooting section — this is the #1 cause of "my job runs but nothing appears.")
+- **The very last window may never fire.** With a bounded dataset, the final events have nothing after them to push the watermark past their window's end. That window just stays open. This is normal and almost never affects the answer.
 
 ### Checkpointing
 Periodically snapshots Kafka offsets + in-flight state to disk. On crash, the job resumes from the last checkpoint. Trade-off: too frequent = expensive; too rare = more lost progress.
+
+## Flink SQL tables are NOT real tables
+
+This trips up SQL people: in a Flink job, `CREATE TABLE` does **not** create storage. It declares a *connector* — a live pipe to something external:
+
+- A **source** table (`'connector' = 'kafka'`) is a continuously-updating view over a Kafka topic. Reading from it never "ends."
+- A **sink** table (`'connector' = 'jdbc'`) is a write-pipe to a Postgres table that **must already exist** (Flink won't create it for you).
+
+So the workflow is always: create the real Postgres table yourself → declare a matching Flink sink table → `INSERT INTO sink SELECT ... FROM source`. The column names/types on both sides must line up, or the job fails at planning.
+
+## Lecture code vs your homework (don't mix them up)
+
+The lecture/workshop code and the homework use **different data and conventions**:
+
+| | Lecture (`src/`) | Homework (`homework/`) |
+|---|---|---|
+| Data | yellow taxi | green taxi |
+| Topic | `rides` | `green-trips` |
+| Timestamp field | `tpep_pickup_datetime` | `lpep_pickup_datetime` |
+| Timestamp format | epoch **milliseconds** (int) | datetime **string** `'2025-10-01 00:21:47'` |
+| Parse in DDL | `TO_TIMESTAMP_LTZ(field, 3)` | `TO_TIMESTAMP(field, 'yyyy-MM-dd HH:mm:ss')` |
+
+The two `TO_TIMESTAMP` functions are **not** interchangeable: `TO_TIMESTAMP_LTZ(x, 3)` expects a number (epoch ms); `TO_TIMESTAMP(x, format)` expects a string. Using the wrong one yields `NULL` → the watermark never advances → no output.
+
+## Troubleshooting: "my job runs but Postgres stays empty"
+
+Streaming failures are usually silent (a job that produces nothing looks the same as a job that's "still working"). Check these in order:
+
+1. **Parallelism > number of partitions.** The `green-trips` topic has **1 partition**. If `set_parallelism()` is higher, the extra subtasks sit idle, hold their watermark at −∞, and `min(all watermarks)` never advances → no window ever fires. **Fix:** `env.set_parallelism(1)`.
+2. **Timestamps parse to NULL.** If your `TO_TIMESTAMP(...)` format doesn't match the actual string (or you used `_LTZ` on a string / `TO_TIMESTAMP` on a number), `event_timestamp` is NULL and the watermark is stuck. **Check:** `docker exec -it 07-streaming-redpanda-1 rpk topic consume green-trips --num 1` and confirm the timestamp is the shape your DDL expects.
+3. **The sink Postgres table doesn't exist, or types mismatch.** The JDBC sink won't auto-create. A `DOUBLE` expression into a `BIGINT` column also fails. **Check:** the Flink UI (http://localhost:8081) → the failed job → exceptions tab for the real error. (A `try/except` that just `print`s will hide this from your terminal.)
+4. **You re-sent data and have duplicates.** Delete + recreate the topic, then re-produce:
+   `docker exec -it 07-streaming-redpanda-1 rpk topic delete green-trips`
+5. **It's not actually broken — it's streaming.** The job runs forever by design. Give it 1–2 minutes, query Postgres *while it runs*, then cancel it from the Flink UI.
+
+> Container names: this folder is `07-streaming`, so containers are `07-streaming-redpanda-1`, `07-streaming-jobmanager-1`, `07-streaming-postgres-1`. (Course docs say `workshop-…` — substitute your prefix.)
 
 ## Submitting a Flink job
 
@@ -139,6 +232,13 @@ See `Dockerfile.flink` for the working ARM64 setup.
 ```bash
 docker compose down        # stop containers
 docker compose down -v     # also drop the Postgres volume
+```
+
+## Offset cleanup
+
+```bash
+docker compose exec redpanda rpk topic delete green-trips
+docker compose exec redpanda rpk topic create green-trips
 ```
 
 ## File structure

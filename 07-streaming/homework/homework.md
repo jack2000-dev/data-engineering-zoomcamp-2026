@@ -52,13 +52,28 @@ docker exec -it workshop-redpanda-1 rpk version
 
 What version of Redpanda are you running?
 
+### Answer 1: 
+
+```text
+docker compose exec redpanda rpk 
+
+version       
+rpk version: v25.3.9
+Git ref:     836b4a36ef6d5121edbb1e68f0f673c2a8a244e2
+Build date:  2026 Feb 26 07 47 54 Thu
+OS/Arch:     linux/arm64
+Go version:  go1.24.3
+
+Redpanda Cluster
+  node-1  v25.3.9 - 836b4a36ef6d5121edbb1e68f0f673c2a8a244e2
+```
 
 ## Question 2. Sending data to Redpanda
 
 Create a topic called `green-trips`:
 
 ```bash
-docker exec -it workshop-redpanda-1 rpk topic create green-trips
+docker exec -it 07-streaming-redpanda-1 rpk topic create green-trips
 ```
 
 Now write a producer to send the green taxi data to this topic.
@@ -95,11 +110,16 @@ print(f'took {(t1 - t0):.2f} seconds')
 
 How long did it take to send the data?
 
-- 10 seconds
-- 60 seconds
-- 120 seconds
-- 300 seconds
+- [x] 10 seconds
+- [ ] 60 seconds
+- [ ] 120 seconds
+- [ ] 300 seconds
 
+### Answer 2:
+
+```bash
+took 3.49 seconds
+```
 
 ## Question 3. Consumer - trip distance
 
@@ -110,11 +130,24 @@ Count how many trips have a `trip_distance` greater than 5.0 kilometers.
 
 How many trips have `trip_distance` > 5?
 
-- 6506
-- 7506
-- 8506
-- 9506
+- [ ] 6506
+- [ ] 7506
+- [x] 8506
+- [ ] 9506
 
+### Answer 3: 
+
+After ran consumer_postgres.py it wrote into my Postgres DB. Then I use `select count(*) from processed_events where trip_distance > 5`
+
+Output:
+
+```text
++-------+
+| count |
+|-------|
+| 8506  |
++-------+
+```
 
 ## Part 2: PyFlink (Questions 4-6)
 
@@ -172,11 +205,22 @@ LIMIT 3;
 
 Which `PULocationID` had the most trips in a single 5-minute window?
 
-- 42
-- 74
-- 75
-- 166
+- [ ] 42
+- [x] 74
+- [ ] 75
+- [ ] 166
 
+### Answer 4:
+
+```text
++--------------+-----------+
+| pulocationid | num_trips |
+|--------------+-----------|
+| 74           | 15        |
+| 74           | 14        |
+| 74           | 13        |
++--------------+-----------+
+```
 
 ## Question 5. Session window - longest streak
 
@@ -192,11 +236,20 @@ with the longest session (most trips in a single session).
 
 How many trips were in the longest session?
 
-- 12
-- 31
-- 51
-- 81
+- [ ] 12
+- [ ] 31
+- [ ] 51
+- [x] 81
 
+### Answers 5:
+
+```text
++--------------+-----------+
+| pulocationid | num_trips |
+|--------------+-----------|
+| 74           | 81        |
++--------------+-----------+
+```
 
 ## Question 6. Tumbling window - largest tip
 
@@ -205,11 +258,20 @@ total `tip_amount` per hour (across all locations).
 
 Which hour had the highest total tip amount?
 
-- 2025-10-01 18:00:00
-- 2025-10-16 18:00:00
-- 2025-10-22 08:00:00
-- 2025-10-30 16:00:00
+- [ ] 2025-10-01 18:00:00
+- [x] 2025-10-16 18:00:00
+- [ ] 2025-10-22 08:00:00
+- [ ] 2025-10-30 16:00:00
 
+### Answer 6:
+
+```text
++---------------------+-------------------+
+| window_start        | total_tips        |
+|---------------------+-------------------|
+| 2025-10-16 18:00:00 | 510.8599999999999 |
++---------------------+-------------------+
+```
 
 ## Submitting the solutions
 

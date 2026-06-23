@@ -10,13 +10,13 @@ def create_events_source_kafka(t_env):
             DOLocationID INTEGER,
             trip_distance DOUBLE,
             total_amount DOUBLE,
-            lpep_pickup_datetime VARCHAR,
-            event_timestamp AS TO_TIMESTAMP(lpep_pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),
+            tpep_pickup_datetime BIGINT,
+            event_timestamp AS TO_TIMESTAMP_LTZ(tpep_pickup_datetime, 3),
             WATERMARK for event_timestamp as event_timestamp - INTERVAL '5' SECOND
         ) WITH (
             'connector' = 'kafka',
             'properties.bootstrap.servers' = 'redpanda:29092',
-            'topic' = 'green-trips',
+            'topic' = 'rides',
             'scan.startup.mode' = 'earliest-offset',
             'properties.auto.offset.reset' = 'earliest',
             'format' = 'json'
@@ -51,7 +51,8 @@ def create_events_aggregated_sink(t_env):
 def log_aggregation():
     env = StreamExecutionEnvironment.get_execution_environment()
     env.enable_checkpointing(10 * 1000)
-    env.set_parallelism(1)
+    env.set_parallelism(3)
+
     settings = EnvironmentSettings.new_instance().in_streaming_mode().build()
     t_env = StreamTableEnvironment.create(env, environment_settings=settings)
 
@@ -67,7 +68,7 @@ def log_aggregation():
             COUNT(*) AS num_trips,
             SUM(total_amount) AS total_revenue
         FROM TABLE(
-            TUMBLE(TABLE {source_table}, DESCRIPTOR(event_timestamp), INTERVAL '5' MINUTE)
+            TUMBLE(TABLE {source_table}, DESCRIPTOR(event_timestamp), INTERVAL '1' HOUR)
         )
         GROUP BY window_start, PULocationID;
 

@@ -3,7 +3,7 @@ from pyflink.table import EnvironmentSettings, StreamTableEnvironment
 
 
 def create_events_source_kafka(t_env):
-    table_name = "events"
+    table_name = "green_trips"
     source_ddl = f"""
         CREATE TABLE {table_name} (
             PULocationID INTEGER,
@@ -27,14 +27,14 @@ def create_events_source_kafka(t_env):
 
 
 def create_events_aggregated_sink(t_env):
-    table_name = 'processed_events_aggregated'
+    table_name = 'q5_session_window'
     sink_ddl = f"""
         CREATE TABLE {table_name} (
-            window_start TIMESTAMP(3),
+            session_start TIMESTAMP(3),
+            session_end TIMESTAMP(3),
             PULocationID INT,
             num_trips BIGINT,
-            total_revenue DOUBLE,
-            PRIMARY KEY (window_start, PULocationID) NOT ENFORCED
+            PRIMARY KEY (session_start, PULocationID) NOT ENFORCED
         ) WITH (
             'connector' = 'jdbc',
             'url' = 'jdbc:postgresql://postgres:5432/postgres',
@@ -62,14 +62,12 @@ def log_aggregation():
         t_env.execute_sql(f"""
         INSERT INTO {aggregated_table}
         SELECT
-            window_start,
+            SESSION_START(event_timestamp, INTERVAL '5' MINUTE) AS session_start,
+            SESSION_END(event_timestamp, INTERVAL '5' MINUTE) AS session_end,
             PULocationID,
-            COUNT(*) AS num_trips,
-            SUM(total_amount) AS total_revenue
-        FROM TABLE(
-            TUMBLE(TABLE {source_table}, DESCRIPTOR(event_timestamp), INTERVAL '5' MINUTE)
-        )
-        GROUP BY window_start, PULocationID;
+            COUNT(*) AS num_trips
+        FROM {source_table}
+        GROUP BY PULocationID, SESSION(event_timestamp, INTERVAL '5' MINUTE)
 
         """).wait()
 
