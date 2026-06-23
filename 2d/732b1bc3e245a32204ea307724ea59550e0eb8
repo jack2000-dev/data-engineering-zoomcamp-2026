@@ -1,0 +1,49 @@
+07-streaming/homework/create_table.sql
+  h_0b5caf7ef38889 1-12
+07-streaming/src/job/q4_tumbling_pu.py
+  h_0b5caf7ef38889 1-58
+07-streaming/README.md
+  s_e73e0cd6d87a87::t_ead61fffeef931 178-213
+  s_e73e0cd6d87a87::t_c1d5bbdcf87cef 16-31
+  h_0b5caf7ef38889 237-243
+  s_e73e0cd6d87a87::t_df5321fc5d06d4 125-133,135-162,164-173
+07-streaming/src/job/aggregation_job.py
+  h_0b5caf7ef38889 13-14,19,54,70
+07-streaming/src/job/q6_largest_tip.py
+  h_0b5caf7ef38889 1-90
+07-streaming/homework/producers/producer.py
+  h_0b5caf7ef38889 1-55
+07-streaming/src/job/q5_session_window.py
+  h_0b5caf7ef38889 1-39,41-43,46-79
+07-streaming/homework/homework.md
+  h_0b5caf7ef38889 55,57-69,76,113-116,118-122,133-136,138-140,142-150,208-211,213-223,239-242,244-252,261-264,266-274
+07-streaming/src/job/q6_largest_tip.sql
+  h_0b5caf7ef38889 1-11
+07-streaming/homework/models.py
+  h_0b5caf7ef38889 1-38
+07-streaming/homework/consumers/consumer_postgres.py
+  h_0b5caf7ef38889 1-57
+07-streaming/src/job/q5_session_window.sql
+  h_0b5caf7ef38889 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "2d732b1bc3e245a32204ea307724ea59550e0eb8",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_e73e0cd6d87a87": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dab87ac5-599d-4fc3-a97f-f8e0adbf94fb",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
