@@ -1,0 +1,36 @@
+LECTURE.md
+  s_7cbaccf9c8b8e8::t_961993f3a47bc3 552
+  s_7cbaccf9c8b8e8::t_1a87efe256db46 1,3-10,12-24,26
+  s_7cbaccf9c8b8e8::t_03e8e386e00f7e 1528
+  h_0b5caf7ef38889 2,25,27-239,241-551,553-554,556-921,923-1021,1023-1028,1030-1172,1174-1416,1418-1420,1424-1523,1525-1527,1529-2152
+  s_7cbaccf9c8b8e8::t_6b3a2706fa9e40 922
+  s_7cbaccf9c8b8e8::t_4794a1c73bbe90 11
+  s_7cbaccf9c8b8e8::t_cc865da398a321 555
+  s_7cbaccf9c8b8e8::t_e5f2de2c058896 1022
+  s_7cbaccf9c8b8e8::t_99ff66f129f0dc 1029
+  s_7cbaccf9c8b8e8::t_3a2fb4e99b0a73 1173
+  s_7cbaccf9c8b8e8::t_4189589aba3332 240
+  s_7cbaccf9c8b8e8::t_69c218c8e1eb44 1417,1421-1423
+  s_7cbaccf9c8b8e8::t_ce771bfac52db0 1524
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "6f96e02a8ec15b9d73dfd5a39dedbd565b8cf895",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_7cbaccf9c8b8e8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae01592e-eae1-48db-bb46-a5f12662c7b9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
