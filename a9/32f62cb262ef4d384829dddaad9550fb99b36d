@@ -1,0 +1,25 @@
+README.md
+  s_8113efa402b0b6::t_ff549f2fab3121 63-66,68-72
+  s_8113efa402b0b6::t_9d23f82f3f3e89 85-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "a932f62cb262ef4d384829dddaad9550fb99b36d",
+  "prompts": {},
+  "humans": {
+    "h_0b5caf7ef38889": {
+      "author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_8113efa402b0b6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63d3127b-76b4-455a-b137-9ffb25b27603",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jack2000-dev <jackwforwork@gmail.com>"
+    }
+  }
+}
