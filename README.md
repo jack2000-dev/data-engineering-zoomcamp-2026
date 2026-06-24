@@ -10,7 +10,6 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Module 1: Containerization and Infrastructure as Code
 
-[Local notes and work](01-docker-terraform/)
 
 - [x] Learn GCP fundamentals for the course environment
 - [x] Understand Docker fundamentals and Docker Compose
@@ -21,7 +20,6 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Module 2: Workflow Orchestration
 
-[Local notes and work](02-workflow-orchestration/)
 
 - [x] Understand data lakes and workflow orchestration concepts
 - [x] Build and schedule workflows with Kestra
@@ -32,7 +30,6 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Workshop 1: Data Ingestion
 
-[Local notes and work](03-dlt-workshop/)
 
 - [x] Learn data ingestion patterns with dlt
 - [x] Read from APIs and handle scalable pipelines
@@ -41,7 +38,6 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Module 3: Data Warehousing
 
-[Local notes and work](03-data-warehouse/)
 
 - [x] Understand BigQuery as a serverless data warehouse
 - [x] Create external tables over files in GCS
@@ -64,11 +60,16 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Module 5: Data Platforms
 
-- [x] Understand end-to-end data platform design
+
+End-to-end Lakehouse on **Databricks**: Delta Lake + Unity Catalog + a medallion pipeline deployed as an Asset Bundle.
+
+- [x] Understand the Lakehouse model (Delta Lake over object storage)
 - [x] Build data pipelines with ~~Bruin~~ **Databricks**
-- [x] Ingest data into the platform
-- [ ] Transform and validate data quality
-- [ ] Deploy data workflows to BigQuery
+- [x] Ingest raw data into a Bronze Delta table (`samples.nyctaxi.trips`)
+- [x] Transform Bronze → Silver → Gold with Lakeflow Declarative Pipelines
+- [x] Enforce data quality with pipeline expectations (`@dlt.expect_or_fail`)
+- [x] Govern tables and track lineage with Unity Catalog
+- [x] Deploy jobs and pipelines via Databricks Asset Bundles (`databricks bundle deploy`)
 - [x] Complete Module 5 homework and assignments
 
 ## Module 6: Batch Processing
@@ -81,11 +82,17 @@ The checklist below tracks my progress against the 2026 syllabus.
 
 ## Module 7: Streaming
 
-- [x] Learn Kafka fundamentals
-- [ ] Build streaming applications with Kafka Streams and KSQL
-- [ ] Manage schemas with Avro
-- [ ] Understand event-driven data pipeline patterns
-- [ ] Complete Module 7 homework and assignments
+
+Real-time pipeline: **Producer (Python) → Kafka (Redpanda) → Flink → PostgreSQL**, using NYC taxi data.
+
+- [x] Learn Kafka fundamentals (topics, offsets, consumer groups)
+- [x] Run Redpanda as a drop-in, JVM-free Kafka replacement
+- [x] Build Kafka producers and consumers in Python (`kafka-python`)
+- [x] Stand up a Flink cluster and run PyFlink jobs (ARM64-compatible image)
+- [x] Process event-time streams with watermarks and checkpointing
+- [x] Build tumbling, sliding, and session windows in Flink SQL
+- [x] Stream aggregations into PostgreSQL via the JDBC upsert sink
+- [x] Complete Module 7 homework and assignments
 
 ## Final Project
 
