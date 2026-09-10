@@ -1,5 +1,5 @@
 # Start with slim Python 3.13 image for smaller size
-FROM python:3.13.11-slim
+FROM python:3.15.0rc1-slim
 
 # Copy uv binary from official uv image
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/
